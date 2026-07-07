@@ -10,10 +10,11 @@ A Noctalia plugin that provides a quick calculator panel powered by qalculate.
 
 - Uses amazing [libqalculate](https://github.com/qalculate/libqalculate)
 - Persistent expression history
-- Copy results to clipboard
+- ~~Copy results to clipboard~~
 
 ## Requirements
 
+- [noctalia v5](https://github.com/noctalia-dev/noctalia)
 - [qalc](https://github.com/qalculate/libqalculate)
 
 ## Installation
@@ -21,22 +22,26 @@ A Noctalia plugin that provides a quick calculator panel powered by qalculate.
 1. Clone this repository into your Noctalia plugins directory:
 
 ```sh
-cd ~/.local/share/noctalia/plugins/
+cd ~/.local/state/noctalia/plugins/
 git clone https://github.com/shadr/noctalia-qalculate
 ```
 
-2. Enable the plugin in Noctalia settings
+3. Add that `plugins` directory as a plugins source for noctalia
 
-3. Bind a key to open the calculator panel
+   `Noctalia Settings > Plugins > Add source > Path`
+
+4. Enable the plugin in Noctalia settings
+
+5. Bind a key to open the calculator panel
 
 ## Usage
 
 ### IPC Command
 
-The plugin exposes an IPC endpoint to show the calculator panel:
+The plugin uses built-in noctalia messages to trigger the calculator panel
 
 ```sh
-noctalia-shell ipc call plugin:qalculate showPanel
+noctalia msg panel-toggle shadr/noctalia-qalculate:panel
 ```
 
 ### Keyboard Shortcuts
@@ -44,7 +49,7 @@ noctalia-shell ipc call plugin:qalculate showPanel
 Once the panel is open:
 
 - **Enter** - Save current calculation to history
-- **Ctrl+C** - Copy result to clipboard
+- ~~**Ctrl+C** - Copy result to the clipboard~~ currently not supported in noctalia v5
 - **Esc** - Close panel
 
 ## Key Binding Examples
@@ -53,15 +58,19 @@ Once the panel is open:
 
 ```
 binds {
-    Mod+A { spawn "noctalia-shell" "ipc" "call" "plugin:qalculate" "showPanel"; }
+    Mod+A { spawn "noctalia" "msg" "panel-toggle" "shadr/noctalia-qalculate:panel"; }
 }
 ```
 
 #### Hyprland
 
 ```
-bind = Mod+A, exec, noctalia-shell ipc call plugin:qalculate showPanel
+bind = Mod+A, exec, noctalia msg panel-toggle shadr/noctalia-qalculate:panel
 ```
+
+## Legacy Noctalia v4
+You can find quickshell based version of this plugin in [another](https://github.com/shadr/noctalia-qalculate/tree/noctalia-v4) branch.
+
 
 ## License
 
