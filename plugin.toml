@@ -1,0 +1,16 @@
+id = "shadr/noctalia-qalculate"
+name = "Quick Qalculate"
+version = "0.2.0"
+min_noctalia = "5.0.0"
+author = "shadr"
+license = "MIT"
+description = "Quick qalculate prompt inspired by rofi-calc"
+dependencies = ["qalc"]
+
+[[panel]]
+id = "panel"
+entry = "panel.luau"
+width = 560
+height = 600
+placement = "floating"
+position = "center"
