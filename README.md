@@ -22,11 +22,12 @@ A Noctalia plugin that provides a quick calculator panel powered by qalculate.
 1. Clone this repository into your Noctalia plugins directory:
 
 ```sh
-cd ~/.local/state/noctalia/plugins/
+mkdir -p ~/.local/share/noctalia/plugins
+cd ~/.local/share/noctalia/plugins
 git clone https://github.com/shadr/noctalia-qalculate
 ```
 
-3. Add that `plugins` directory as a plugins source for noctalia
+3. (Optional) If Noctalia doesn't see the plugin, then add that `plugins` directory as a plugins source for Noctalia
 
    `Noctalia Settings > Plugins > Add source > Path`
 
@@ -38,7 +39,7 @@ git clone https://github.com/shadr/noctalia-qalculate
 
 ### IPC Command
 
-The plugin uses built-in noctalia messages to trigger the calculator panel
+The plugin uses built-in Noctalia messages to trigger the calculator panel
 
 ```sh
 noctalia msg panel-toggle shadr/noctalia-qalculate:panel
@@ -49,7 +50,7 @@ noctalia msg panel-toggle shadr/noctalia-qalculate:panel
 Once the panel is open:
 
 - **Enter** - Save current calculation to history
-- ~~**Ctrl+C** - Copy result to the clipboard~~ currently not supported in noctalia v5
+- ~~**Ctrl+C** - Copy result to the clipboard~~ currently not supported in Noctalia v5
 - **Esc** - Close panel
 
 ## Key Binding Examples
